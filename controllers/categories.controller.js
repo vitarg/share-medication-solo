@@ -12,4 +12,13 @@ module.exports.categoriesController = {
       res.status(401).json({ error: e.toString() });
     }
   },
+  getAllCategories: async (req, res) => {
+    try {
+      const categories = await Category.find();
+
+      return res.json(categories);
+    } catch (e) {
+      return res.status(401).json({ error: e.toString() });
+    }
+  },
 };

@@ -6,5 +6,6 @@ const {
 const router = Router();
 
 router.post("/categories", categoriesController.addCategory);
+router.get("/categories", categoriesController.getAllCategories);
 
 module.exports = router;

@@ -5,9 +5,9 @@ import { getAllMedications } from "../../redux/features/medications";
 const HomePage = () => {
   const dispatch = useDispatch();
 
-  const loading = useSelector((state) => state.medications.loading);
-  const medications = useSelector((state) => state.medications.items);
-  const error = useSelector((state) => state.medications.error);
+  const loading = useSelector((state) => state.medicationsReducer.loading);
+  const medications = useSelector((state) => state.medicationsReducer.items);
+  const error = useSelector((state) => state.medicationsReducer.error);
 
   useEffect(() => {
     dispatch(getAllMedications());

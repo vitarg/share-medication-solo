@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
+const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const chalk = require("chalk");
 
@@ -8,6 +9,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static("public"));
+app.use(cors());
 app.use(fileUpload());
 app.use(require("./routes/index"));
 

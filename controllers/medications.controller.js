@@ -33,4 +33,13 @@ module.exports.medicationsController = {
       return res.status(401).json({ error: e.toString() });
     }
   },
+  getAllMedications: async (req, res) => {
+    try {
+      const medications = await Medication.find();
+
+      return res.json(medications);
+    } catch (e) {
+      return res.status(401).json({ error: e.toString() });
+    }
+  },
 };

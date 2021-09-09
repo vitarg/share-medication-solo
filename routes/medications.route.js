@@ -6,5 +6,6 @@ const {
 const router = Router();
 
 router.post("/medications", medicationsController.addMedication);
+router.get("/medications", medicationsController.getAllMedications);
 
 module.exports = router;

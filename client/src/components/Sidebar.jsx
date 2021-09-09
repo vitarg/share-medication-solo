@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../redux/features/categories";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,9 @@ const Sidebar = () => {
   return (
     <ul>
       {categories.map((e) => (
-        <li key={e._id}>{e.name}</li>
+        <li key={e._id}>
+          <Link to={`/medications/${e._id}`}>{e.name}</Link>
+        </li>
       ))}
     </ul>
   );

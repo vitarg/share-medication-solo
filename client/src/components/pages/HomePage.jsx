@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllMedications } from "../../redux/features/medications";
+import { useParams } from "react-router-dom";
 
 const HomePage = () => {
   const dispatch = useDispatch();
+
+  const { categoryId } = useParams();
 
   const loading = useSelector((state) => state.medicationsReducer.loading);
   const medications = useSelector((state) => state.medicationsReducer.items);
@@ -19,6 +22,19 @@ const HomePage = () => {
 
   if (error) {
     return <div>{error}</div>;
+  }
+
+  if (categoryId) {
+    const filterMedication = medications.filter(
+      (e) => e.category === categoryId
+    );
+    return (
+      <ul>
+        {filterMedication.map((e) => {
+          return <li key={e._id}>{e.name}</li>;
+        })}
+      </ul>
+    );
   }
 
   return (

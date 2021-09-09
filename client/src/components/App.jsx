@@ -9,7 +9,10 @@ const App = () => {
       <Sidebar />
 
       <Switch>
-        <Route path={"/"}>
+        <Route exact path={"/"}>
+          <HomePage />
+        </Route>
+        <Route path={"/medications/:categoryId"}>
           <HomePage />
         </Route>
       </Switch>

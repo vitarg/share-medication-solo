@@ -1,3 +1,5 @@
+const { v4: uuidv4 } = require("uuid");
+const path = require("path");
 const Medication = require("../models/Medication.model");
 
 module.exports.medicationsController = {
@@ -6,10 +8,21 @@ module.exports.medicationsController = {
       const { name, description, category, price, expireDate, hasRecipe } =
         req.body;
 
+      const image = req.files.img;
+      const imageName = `${uuidv4()}${path.extname(image.name)}`;
+
+      await image.mv(
+        path.resolve(__dirname, "../public/img", imageName),
+        (e) => {
+          if (e) console.log(e);
+        }
+      );
+
       await Medication.create({
         name,
         description,
         category,
+        img: `/img/${imageName}`,
         price,
         expireDate,
         hasRecipe,
